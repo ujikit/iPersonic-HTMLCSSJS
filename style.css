@@ -54,6 +54,9 @@ body {
     background-color: #FF7518;
     color: white;
 }
+.btn.btn-orange:hover {
+    background-color: #ee6509;
+}
 .icon-sm {
     font-size: 10px;
 }
@@ -95,16 +98,18 @@ body {
 .topmenu li:hover ul {
     display: block;
     width: 200px;
+    border: 1px solid #bbbbbb;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.1);
 }
 .topmenu li:hover ul li {
     display: block;
 }
 .topmenu li:hover ul li a {
-    background-color: #eeeeee;
+    background-color: #ffffff;
     text-align: left;
     color: black;
     font-size: 16px;
-    padding: 10px 15px 10px 15px;
+    padding: 5px 15px 5px 15px;
 }
 .topmenu li:hover ul li a:hover {
     background-color: #2780E3;
