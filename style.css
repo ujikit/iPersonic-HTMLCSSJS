@@ -123,6 +123,7 @@ body {
     padding: 0px;
     font-size: 70px;
     color: #333333;
+    line-height: 1.2;
 }
 .main {
     padding-top: 20px;
@@ -143,6 +144,9 @@ body {
     padding-top: 40px;
     padding-bottom: 40px; 
     color: #bbbbbb;
+}
+.footer p {
+    font-size: 16px;
 }
 .footer a {
     text-decoration: none;
@@ -187,6 +191,13 @@ body {
     background-color: #f5f5f5;
     padding: 20px;
     border: 1px solid #E3E3E3;
+}
+h1 {
+    font-size: 40px;
+}
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
 }
 .h-ruler {
     border-top: none;

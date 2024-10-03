@@ -36,7 +36,7 @@ const quizOptions = [
     }        
 ];
 
-function displayDropdownTopMenu(personalities) {
+function displayDropdownTopMenu() {
     let personalityHTML = "<ul>";
     for(let i = 0; i < personalities.length; i++) {
         personalityHTML += "<li><a href='"+personalities[i]['url']+"'>"+personalities[i]['label']+"</a></li>";
@@ -47,17 +47,26 @@ function displayDropdownTopMenu(personalities) {
     personalityContainer.innerHTML = personalityHTML;
 }
 
-function displayQuizOptions(quizOptions, totalAnswer) {
+function displayQuizOptions(fxAnswer) {
+    let totalAnswer = fxAnswer.length;
     // set quiz step
     let quizStepHTML = "<ul>";
-    quizStepHTML += "<li class='active'>Langkah 1</li>";
-    quizStepHTML += "<li>Langkah 2</li>";
-    quizStepHTML += "<li>Langkah 3</li>";
-    quizStepHTML += "<li>Langkah 4</li>";
+    let stepActive = '';
+    for(let i = 0; i < quizOptions.length; i++) {
+        let numberStep = i + 1;
+        if(totalAnswer === i) {
+            stepActive = 'active';
+        }else{
+            stepActive = '';
+        }
+        quizStepHTML += "<li class='"+stepActive+"'>Langkah "+numberStep+"</li>";
+    }
     quizStepHTML += "</ul>";
 
     const quizStepContainer = document.querySelector(".quiz-step");
-    quizStepContainer.innerHTML = quizStepHTML;
+    if (quizStepContainer) {
+        quizStepContainer.innerHTML = quizStepHTML;
+    }
 
     // set quiz options
     let quizOptionsHTML = "";
@@ -73,26 +82,46 @@ function displayQuizOptions(quizOptions, totalAnswer) {
     quizOptionsHTML += "</div>";
 
     const quizOptionsContainer = document.querySelector(".quiz-options");
-    quizOptionsContainer.innerHTML = quizOptionsHTML;
+    if(quizOptionsContainer) {
+        quizOptionsContainer.innerHTML = quizOptionsHTML;
+    }
+    
+    // call function
+    saveQuizAnswer(fxAnswer);
+}
 
+function saveQuizAnswer(fxAnswer) {
     // set click button answer
     const answerButtons = document.querySelectorAll(".choose-answer");
-    let fxAnswer = '';
     answerButtons.forEach(button => {
         button.addEventListener("click", function() {
             let valueButton = button.getAttribute("data");
-            fxAnswer = fxAnswer + valueButton;
-            if(fxAnswer.length < quizOptions.length) {
+            if(fxAnswer.length < 4) {
+                fxAnswer = fxAnswer + valueButton;
+                let totalAnswer = fxAnswer.length;
                 console.log(fxAnswer);
-            }else{
-                console.log("redirect to: "+fxAnswer);
+                console.log(totalAnswer)
+
+                if(fxAnswer.length < quizOptions.length) {
+                    displayQuizOptions(fxAnswer);
+                }else{
+                    for(let i = 0; i < personalities.length; i++) {
+                        if(fxAnswer === personalities[i]['fx']) {
+                            console.log("redirect to "+personalities[i]['url']);
+                            window.location.href = personalities[i]['url'];
+                        }
+                    }
+                }                
             }
         })
-    })
+    });
 }
 
+function logicQuizOptions() {
+    let fxAnswer = '';
+    displayQuizOptions(fxAnswer);
+}
 
 // call functions
-displayDropdownTopMenu(personalities);
-let totalAnswer = 0;
-displayQuizOptions(quizOptions, totalAnswer);
+displayDropdownTopMenu();
+logicQuizOptions();
