@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+    margin: 0px;
+    padding: 0px;
+}
+.topbar {
+    background-color: #2C3E50;
+    height: 58px;
+}
+.container {
+    max-width: 1270px;
+    margin: auto;
+}
+.grid-content {
+    display: grid;
+}
+.topbar-column {
+    grid-template-columns: 1fr 1fr;
+    height: 55px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    Width: 110px;
+}
+.bg-red {
+    background-color: red;
+}
+.bg-blue {
+    background-color: blue;
+}
+.btn {
+    display: inline-block;
+    background-color: #cccccc;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px 10px 20px;
+}
+.btn.btn-sm {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px 5px 10px;
+}
+.btn.btn-orange {
+    background-color: #FF7518;
+    color: white;
+}
+.icon-sm {
+    font-size: 10px;
+}
+.topmenu {
+    text-align: right;
+}
+.topmenu ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    position: relative;
+}
+.topmenu ul li {
+    display: inline-block;
+}
+.topmenu ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 17px 15px 17px 15px;
+    font-size: 18px;
+}
+.topmenu ul li a:hover {
+    background-color: black;
+}
+.topmenu ul li a.show-on-tab {
+    display: none;
+}
+.topmenu ul li a.hide-on-tab {
+    display: block;
+}
+.topmenu ul ul {
+    display: none;
+    position: absolute;
+}
+.topmenu li:hover a {
+    background-color: black;
+}
+.topmenu li:hover ul {
+    display: block;
+    width: 200px;
+}
+.topmenu li:hover ul li {
+    display: block;
+}
+.topmenu li:hover ul li a {
+    background-color: #eeeeee;
+    text-align: left;
+    color: black;
+    font-size: 16px;
+    padding: 10px 15px 10px 15px;
+}
+.topmenu li:hover ul li a:hover {
+    background-color: #2780E3;
+    color: white;
+}
+@media (max-width: 1199px) {
+    .container {
+        max-width: 940px;
+    }
+}
+@media (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+}
+/* on Tablet */
+@media (max-width: 767px) {
+    .container {
+        width: 96%;
+    }
+    .topmenu ul li a.show-on-tab {
+        display: block;
+    }
+    .topmenu ul li a.hide-on-tab {
+        display: none;
+    }
+    .topmenu li:hover ul {
+        margin-left: -150px;
+    }
+}
