@@ -17,12 +17,76 @@ const personalities = [
     {'fx': '2221', 'url': '15.html', 'label': 'Idealis Pemimpi'},
 ];
 
-let personalityHTML = "<ul>";
-console.log(personalities.length);
-for(let i = 0; i < personalities.length; i++) {
-    personalityHTML += "<li><a href='"+personalities[i]['url']+"'>"+personalities[i]['label']+"</a></li>";
-}
-personalityHTML += "</ul>";
+const quizOptions = [
+    {
+        1: "Saya agak ramah, membuka hati dan saya suka berada bersama-sama dengan orang lain.",
+        2: "Saya membutuhkan banyak waktu untuk sendirian dan agak hati-hati untuk memulai hubungan baru."
+    },
+    {
+        1: "Saya lebih suka bekerja praktis, menghasilkan hasil yang nyata.",
+        2: "Saya lebih suka bekerja secara teori, mengembangkan ide-ide dan konsep baru."
+    },
+    {
+        1: "Saya pintar dalam hal analisis dan logika dan ketika saya ragu, saya membiarkan diri saya dipandu oleh otak saya.",
+        2: "Saya sangat sensitif dan emosional dan bila ragu, aku membiarkan diriku dibimbing oleh hati saya."
+    },
+    {
+        1: "Saya orang yang fleksibel dan spontan, kadang-kadang agak kacau.",
+        2: "Saya orang yang handal dan terorganisir dengan baik. Saya lebih memilih untuk merencanakan masa depan."
+    }        
+];
 
-const personalityContainer = document.querySelector(".personality-container");
-personalityContainer.innerHTML = personalityHTML;
+function displayDropdownTopMenu(personalities) {
+    let personalityHTML = "<ul>";
+    for(let i = 0; i < personalities.length; i++) {
+        personalityHTML += "<li><a href='"+personalities[i]['url']+"'>"+personalities[i]['label']+"</a></li>";
+    }
+    personalityHTML += "</ul>";
+
+    const personalityContainer = document.querySelector(".personality-container");
+    personalityContainer.innerHTML = personalityHTML;
+}
+
+function displayQuizOptions(quizOptions) {
+    // set quiz step
+    let quizStepHTML = "<ul>";
+    quizStepHTML += "<li class='active'>Langkah 1</li>";
+    quizStepHTML += "<li>Langkah 2</li>";
+    quizStepHTML += "<li>Langkah 3</li>";
+    quizStepHTML += "<li>Langkah 4</li>";
+    quizStepHTML += "</ul>";
+
+    const quizStepContainer = document.querySelector(".quiz-step");
+    quizStepContainer.innerHTML = quizStepHTML;
+
+    // set quiz options
+    let answer = 0;
+    let quizOptionsHTML = "";
+    quizOptionsHTML += "<div class='quiz-box'>";
+    quizOptionsHTML += "<p class='lead-2 font-weight-light'>"+quizOptions[answer][1]+"</p>";
+    quizOptionsHTML += "<br />";
+    quizOptionsHTML += "<a href='#' class='btn btn-orange choose-answer' data='1'><i class='fa fa-play' aria-hidden='true'></i>&nbsp;&nbsp;Hal ini berlaku untuk saya</a>";
+    quizOptionsHTML += "</div>";
+    quizOptionsHTML += "<div class='quiz-box'>";
+    quizOptionsHTML += "<p class='lead-2 font-weight-light'>"+quizOptions[answer][2]+"</p>";
+    quizOptionsHTML += "<br />";
+    quizOptionsHTML += "<a href='#' class='btn btn-orange choose-answer' data='2'><i class='fa fa-play' aria-hidden='true'></i>&nbsp;&nbsp;Hal ini berlaku untuk saya</a>";
+    quizOptionsHTML += "</div>";
+
+    const quizOptionsContainer = document.querySelector(".quiz-options");
+    quizOptionsContainer.innerHTML = quizOptionsHTML;
+
+    // set click button answer
+    const answerButtons = document.querySelectorAll(".choose-answer");
+    answerButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            let valueButton = button.getAttribute("data");
+            alert(valueButton);
+        })
+    })
+}
+
+
+// call functions
+displayDropdownTopMenu(personalities);
+displayQuizOptions(quizOptions);

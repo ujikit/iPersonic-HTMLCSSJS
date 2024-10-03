@@ -14,10 +14,8 @@ body {
     max-width: 1270px;
     margin: auto;
 }
-.grid-content {
-    display: grid;
-}
 .topbar-column {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     height: 55px;
 }
@@ -137,6 +135,9 @@ body {
 .lead {
     font-size: 20px;
 }
+.lead-2 {
+    font-size: 25px;
+}
 .footer {
     text-align: center;
     padding-top: 40px;
@@ -149,6 +150,48 @@ body {
 }
 .footer a:hover {
     text-decoration: underline;
+}
+.quiz {
+    
+}
+.quiz h1 {
+    font-size: 40px;
+}
+.quiz-step {
+    
+}
+.quiz-step ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+.quiz-step ul li {
+    display: inline-block;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-right: 20px;
+    color: #999999;
+}
+.quiz-step ul li.active {
+    background-color: #aaaaaa;
+    color: white;
+}
+.quiz-options {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.quiz-box {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border: 1px solid #E3E3E3;
+}
+.h-ruler {
+    border-top: none;
+    border-bottom: 1px solid #E6E6E6;
+    margin-bottom: 30px;
 }
 @media (max-width: 1199px) {
     .container {
