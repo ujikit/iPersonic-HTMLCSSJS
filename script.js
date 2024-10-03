@@ -1,20 +1,20 @@
 const personalities = [
-    {'fx': '2222', 'url': '1.html', 'label': 'Idealis Penyelaras'},
-    {'fx': '1222', 'url': '2.html', 'label': 'Idealis Penyelaras'},
-    {'fx': '1212', 'url': '3.html', 'label': 'Pemikir Dinamis'},
-    {'fx': '1211', 'url': '4.html', 'label': 'Pemikir Pendobrak'},
-    {'fx': '1221', 'url': '5.html', 'label': 'Idealis Spontan'},
-    {'fx': '1121', 'url': '6.html', 'label': 'Pelaku Santai'},
-    {'fx': '1122', 'url': '7.html', 'label': 'Realis Sosial'},
-    {'fx': '1112', 'url': '8.html', 'label': 'Realis Bertekad'},
-    {'fx': '1111', 'url': '9.html', 'label': 'Pelaku Bersemangat'},
-    {'fx': '2111', 'url': '10.html', 'label': 'Pelaku Individualistis'},
-    {'fx': '2121', 'url': '11.html', 'label': 'Pelaku Peka'},
-    {'fx': '2122', 'url': '12.html', 'label': 'Realis Baik Hati'},
-    {'fx': '2112', 'url': '13.html', 'label': 'Realis Terpercaya'},
-    {'fx': '2212', 'url': '14.html', 'label': 'Pemikir Mandiri'},
-    {'fx': '2211', 'url': '15.html', 'label': 'Pemikir Analitis'},
-    {'fx': '2221', 'url': '15.html', 'label': 'Idealis Pemimpi'},
+    {'fx': 'BBBB', 'url': '1.html', 'label': 'Idealis Penyelaras'},
+    {'fx': 'ABBB', 'url': '2.html', 'label': 'Idealis Penyelaras'},
+    {'fx': 'ABAB', 'url': '3.html', 'label': 'Pemikir Dinamis'},
+    {'fx': 'ABAA', 'url': '4.html', 'label': 'Pemikir Pendobrak'},
+    {'fx': 'ABBA', 'url': '5.html', 'label': 'Idealis Spontan'},
+    {'fx': 'AABA', 'url': '6.html', 'label': 'Pelaku Santai'},
+    {'fx': 'AABB', 'url': '7.html', 'label': 'Realis Sosial'},
+    {'fx': 'AAAB', 'url': '8.html', 'label': 'Realis Bertekad'},
+    {'fx': 'AAAA', 'url': '9.html', 'label': 'Pelaku Bersemangat'},
+    {'fx': 'BAAA', 'url': '10.html', 'label': 'Pelaku Individualistis'},
+    {'fx': 'BABA', 'url': '11.html', 'label': 'Pelaku Peka'},
+    {'fx': 'BABB', 'url': '12.html', 'label': 'Realis Baik Hati'},
+    {'fx': 'BAAB', 'url': '13.html', 'label': 'Realis Terpercaya'},
+    {'fx': 'BBAB', 'url': '14.html', 'label': 'Pemikir Mandiri'},
+    {'fx': 'BBAA', 'url': '15.html', 'label': 'Pemikir Analitis'},
+    {'fx': 'BBBA', 'url': '15.html', 'label': 'Idealis Pemimpi'},
 ];
 
 const quizOptions = [
@@ -47,7 +47,7 @@ function displayDropdownTopMenu(personalities) {
     personalityContainer.innerHTML = personalityHTML;
 }
 
-function displayQuizOptions(quizOptions) {
+function displayQuizOptions(quizOptions, totalAnswer) {
     // set quiz step
     let quizStepHTML = "<ul>";
     quizStepHTML += "<li class='active'>Langkah 1</li>";
@@ -60,17 +60,16 @@ function displayQuizOptions(quizOptions) {
     quizStepContainer.innerHTML = quizStepHTML;
 
     // set quiz options
-    let answer = 0;
     let quizOptionsHTML = "";
     quizOptionsHTML += "<div class='quiz-box'>";
-    quizOptionsHTML += "<p class='lead-2 font-weight-light'>"+quizOptions[answer][1]+"</p>";
+    quizOptionsHTML += "<p class='lead-2 font-weight-light'>"+quizOptions[totalAnswer][1]+"</p>";
     quizOptionsHTML += "<br />";
-    quizOptionsHTML += "<a href='#' class='btn btn-orange choose-answer' data='1'><i class='fa fa-play' aria-hidden='true'></i>&nbsp;&nbsp;Hal ini berlaku untuk saya</a>";
+    quizOptionsHTML += "<a href='#' class='btn btn-orange choose-answer' data='A'><i class='fa fa-play' aria-hidden='true'></i>&nbsp;&nbsp;Hal ini berlaku untuk saya</a>";
     quizOptionsHTML += "</div>";
     quizOptionsHTML += "<div class='quiz-box'>";
-    quizOptionsHTML += "<p class='lead-2 font-weight-light'>"+quizOptions[answer][2]+"</p>";
+    quizOptionsHTML += "<p class='lead-2 font-weight-light'>"+quizOptions[totalAnswer][2]+"</p>";
     quizOptionsHTML += "<br />";
-    quizOptionsHTML += "<a href='#' class='btn btn-orange choose-answer' data='2'><i class='fa fa-play' aria-hidden='true'></i>&nbsp;&nbsp;Hal ini berlaku untuk saya</a>";
+    quizOptionsHTML += "<a href='#' class='btn btn-orange choose-answer' data='B'><i class='fa fa-play' aria-hidden='true'></i>&nbsp;&nbsp;Hal ini berlaku untuk saya</a>";
     quizOptionsHTML += "</div>";
 
     const quizOptionsContainer = document.querySelector(".quiz-options");
@@ -78,10 +77,16 @@ function displayQuizOptions(quizOptions) {
 
     // set click button answer
     const answerButtons = document.querySelectorAll(".choose-answer");
+    let fxAnswer = '';
     answerButtons.forEach(button => {
         button.addEventListener("click", function() {
             let valueButton = button.getAttribute("data");
-            alert(valueButton);
+            fxAnswer = fxAnswer + valueButton;
+            if(fxAnswer.length < quizOptions.length) {
+                console.log(fxAnswer);
+            }else{
+                console.log("redirect to: "+fxAnswer);
+            }
         })
     })
 }
@@ -89,4 +94,5 @@ function displayQuizOptions(quizOptions) {
 
 // call functions
 displayDropdownTopMenu(personalities);
-displayQuizOptions(quizOptions);
+let totalAnswer = 0;
+displayQuizOptions(quizOptions, totalAnswer);
