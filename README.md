@@ -11,13 +11,13 @@ Aplikasi Tes Kepribadian ini merupakan cloning dari tes kepribadian berdasarkan 
 ## Struktur Proyek
 
 ├── index.html 
-# Halaman utama aplikasi 
+## Halaman utama aplikasi 
 
 ├── styles.css 
-# Berkas CSS untuk styling 
+## Berkas CSS untuk styling 
 
 └── script.js 
-# Berkas JavaScript untuk logika aplikasi
+## Berkas JavaScript untuk logika aplikasi
 
 
 ## Teknologi yang Digunakan
