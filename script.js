@@ -16,7 +16,7 @@ class PersonalityQuiz {
             {'fx': 'BAAB', 'url': '13.html', 'label': 'Realis Terpercaya'},
             {'fx': 'BBAB', 'url': '14.html', 'label': 'Pemikir Mandiri'},
             {'fx': 'BBAA', 'url': '15.html', 'label': 'Pemikir Analitis'},
-            {'fx': 'BBBA', 'url': '15.html', 'label': 'Idealis Pemimpi'},
+            {'fx': 'BBBA', 'url': '16.html', 'label': 'Idealis Pemimpi'},
         ];
 
         this.quizOptions = [
